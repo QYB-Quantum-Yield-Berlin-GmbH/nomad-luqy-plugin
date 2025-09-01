@@ -27,7 +27,11 @@ app_entry_point = AppEntryPoint(
         filters_locked={'section_defs.definition_qualified_name': [SCHEMA_QN]},
         columns=[
             # Basic info
-            Column(quantity='entry_id', label='Entry ID', selected=False),
+            Column(
+                quantity='datasets.dataset_name',
+                label='Dataset',
+                selected=False,
+            ),
             Column(quantity='mainfile', label='File', selected=True),
             Column(
                 quantity=f'data.settings.timestamp#{SCHEMA_QN}',
@@ -137,11 +141,8 @@ app_entry_point = AppEntryPoint(
                 selected=False,
             ),
             # Metadata
-            Column(
-                quantity='datasets.dataset_name',
-                label='Dataset',
-                selected=False,
-            ),
+            Column(quantity='authors.name', label='Author', selected=False),
+            Column(quantity='entry_id', label='Entry ID', selected=False),
             Column(quantity='upload_create_time', label='Uploaded at', selected=True),
         ],
         # LEFT FILTERS
