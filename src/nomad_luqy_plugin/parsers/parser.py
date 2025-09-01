@@ -23,6 +23,7 @@ from nomad_luqy_plugin.schema_packages.schema_package import (
     LuQYProResult,
     LuQYProSettings,
 )
+from nomad_luqy_plugin.schema_packages.spectra_plot import LuQYSpectrumPlot
 
 configuration = config.get_plugin_entry_point(
     'nomad_luqy_plugin.parsers:parser_entry_point'
@@ -490,6 +491,8 @@ class LuQYParser(MatchingParser):
                         if idx < len(lum_arrays)
                         else np.array([], dtype=float)
                     )
+                    plot = LuQYSpectrumPlot()
+                    r.spectra_plot = plot
                     if (
                         raw_arrays is not None
                         and len(raw_arrays) > 0

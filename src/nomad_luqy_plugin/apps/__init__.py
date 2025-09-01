@@ -345,7 +345,7 @@ app_entry_point = AppEntryPoint(
                     x=Axis(
                         search_quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
                         unit='eV',
-                        title='Bandgap (eV)',
+                        title='Bandgap',
                     ),
                     y=Axis(
                         search_quantity=f'data.results[0].luqy#{SCHEMA_QN}',
@@ -362,12 +362,12 @@ app_entry_point = AppEntryPoint(
                     x=Axis(
                         search_quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
                         unit='eV',
-                        title='Bandgap (eV)',
+                        title='Bandgap',
                     ),
                     y=Axis(
                         search_quantity=f'data.results[0].qfls#{SCHEMA_QN}',
                         unit='eV',
-                        title='QFLS (eV)',
+                        title='QFLS',
                     ),
                     color=f'data.results[0].luqy#{SCHEMA_QN}',
                     size=8,
@@ -380,7 +380,7 @@ app_entry_point = AppEntryPoint(
                     x=Axis(
                         search_quantity=f'data.settings.laser_intensity#{SCHEMA_QN}',
                         unit='mW/cm**2',
-                        title='Laser (mW/cm²)',
+                        title='Laser',
                     ),
                     y=Axis(
                         search_quantity=f'data.results[0].luqy#{SCHEMA_QN}',
@@ -397,12 +397,12 @@ app_entry_point = AppEntryPoint(
                     x=Axis(
                         search_quantity=f'data.settings.laser_intensity#{SCHEMA_QN}',
                         unit='mW/cm**2',
-                        title='Laser (mW/cm²)',
+                        title='Laser',
                     ),
                     y=Axis(
                         search_quantity=f'data.results[0].qfls#{SCHEMA_QN}',
                         unit='eV',
-                        title='QFLS (eV)',
+                        title='QFLS',
                     ),
                     color=f'data.results[0].luqy#{SCHEMA_QN}',
                     size=8,
@@ -415,12 +415,12 @@ app_entry_point = AppEntryPoint(
                     x=Axis(
                         search_quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
                         unit='eV',
-                        title='Bandgap (eV)',
+                        title='Bandgap',
                     ),
                     y=Axis(
                         search_quantity=f'data.results[0].derived_jsc#{SCHEMA_QN}',
                         unit='mA/cm**2',
-                        title='Jsc (mA/cm²)',
+                        title='Jsc',
                     ),
                     color=f'data.results[0].luqy#{SCHEMA_QN}',
                     size=8,
@@ -433,7 +433,7 @@ app_entry_point = AppEntryPoint(
                     x=Axis(
                         search_quantity=f'data.results[0].derived_jsc#{SCHEMA_QN}',
                         unit='mA/cm**2',
-                        title='Jsc (mA/cm²)',
+                        title='Jsc',
                     ),
                     y=Axis(
                         search_quantity=f'data.results[0].luqy#{SCHEMA_QN}',

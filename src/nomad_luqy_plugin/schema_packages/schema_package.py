@@ -21,6 +21,8 @@ from nomad.datamodel.metainfo.basesections import (
 )
 from nomad.metainfo import Datetime, Quantity, SchemaPackage, Section, SubSection
 
+from .spectra_plot import LuQYSpectrumPlot
+
 m_package = SchemaPackage(name='luqy_pro_schema')
 
 
@@ -205,6 +207,7 @@ class LuQYProResult(MeasurementResult):
         shape=['*'],
         description='Detector counts collected with the shutter closed.',
     )
+    spectra_plot = SubSection(section_def=LuQYSpectrumPlot, repeats=False)
 
 
 class LuQYProMeasurement(Measurement, EntryData):
