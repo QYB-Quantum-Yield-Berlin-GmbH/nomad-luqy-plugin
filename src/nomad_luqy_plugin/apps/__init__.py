@@ -23,7 +23,17 @@ app_entry_point = AppEntryPoint(
         path='luqypro',
         category='Measurements',
         breadcrumb='Explore LuQY Pro',
-        search_quantities=SearchQuantities(include=[f'*#{SCHEMA_QN}']),
+        search_quantities=SearchQuantities(
+            include=[
+                f'*#{SCHEMA_QN}',
+                'authors.name',
+                'datasets.dataset_name',
+                'upload_create_time',
+                'upload_user.name',
+                'entry_id',
+                'mainfile',
+            ]
+        ),
         filters_locked={'section_defs.definition_qualified_name': [SCHEMA_QN]},
         columns=[
             # Basic info
@@ -325,7 +335,31 @@ app_entry_point = AppEntryPoint(
                 ),
             ],
         ),
-        # data visualization  charts
+        dashboard=Dashboard(
+            widgets=[
+                WidgetScatterPlot(
+                    title='Bandgap vs. LuQY',
+                    autorange=True,
+                    layout={
+                        'lg': Layout(h=5, w=6, x=0, y=0),
+                        'md': Layout(h=5, w=7, x=0, y=0),
+                        'sm': Layout(h=6, w=6, x=0, y=0),
+                    },
+                    x=Axis(
+                        search_quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
+                        unit='eV',
+                        title='Bandgap (eV)',
+                    ),
+                    y=Axis(
+                        search_quantity=f'data.results[0].luqy#{SCHEMA_QN}',
+                        title='LuQY (%)',
+                        # scale='log',
+                    ),
+                    color=f'data.results[0].qfls#{SCHEMA_QN}',
+                    size=8,
+                ),
+            ]
+        ),
     ),
 )
 
