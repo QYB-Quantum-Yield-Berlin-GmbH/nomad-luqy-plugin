@@ -337,14 +337,11 @@ app_entry_point = AppEntryPoint(
         ),
         dashboard=Dashboard(
             widgets=[
+                # 1) Eg vs LuQY (QFLS)
                 WidgetScatterPlot(
-                    title='Bandgap vs. LuQY',
+                    title='Eg vs LuQY (QFLS)',
                     autorange=True,
-                    layout={
-                        'lg': Layout(h=5, w=6, x=0, y=0),
-                        'md': Layout(h=5, w=7, x=0, y=0),
-                        'sm': Layout(h=6, w=6, x=0, y=0),
-                    },
+                    layout={'lg': Layout(h=6, w=6, x=0, y=0)},
                     x=Axis(
                         search_quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
                         unit='eV',
@@ -353,7 +350,94 @@ app_entry_point = AppEntryPoint(
                     y=Axis(
                         search_quantity=f'data.results[0].luqy#{SCHEMA_QN}',
                         title='LuQY (%)',
-                        # scale='log',
+                    ),
+                    color=f'data.results[0].qfls#{SCHEMA_QN}',
+                    size=8,
+                ),
+                # 2) QFLS vs Bandgap (LuQY)
+                WidgetScatterPlot(
+                    title='QFLS vs Eg (LuQY)',
+                    autorange=True,
+                    layout={'lg': Layout(h=6, w=6, x=6, y=0)},
+                    x=Axis(
+                        search_quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
+                        unit='eV',
+                        title='Bandgap (eV)',
+                    ),
+                    y=Axis(
+                        search_quantity=f'data.results[0].qfls#{SCHEMA_QN}',
+                        unit='eV',
+                        title='QFLS (eV)',
+                    ),
+                    color=f'data.results[0].luqy#{SCHEMA_QN}',
+                    size=8,
+                ),
+                # 3) LuQY (%) vs Laser intensity (t_int)
+                WidgetScatterPlot(
+                    title='LuQY vs Intensity (t_int)',
+                    autorange=True,
+                    layout={'lg': Layout(h=6, w=6, x=0, y=6)},
+                    x=Axis(
+                        search_quantity=f'data.settings.laser_intensity#{SCHEMA_QN}',
+                        unit='mW/cm**2',
+                        title='Laser (mW/cm²)',
+                    ),
+                    y=Axis(
+                        search_quantity=f'data.results[0].luqy#{SCHEMA_QN}',
+                        title='LuQY (%)',
+                    ),
+                    color=f'data.settings.integration_time#{SCHEMA_QN}',
+                    size=8,
+                ),
+                # 4) QFLS vs Laser intensity (LuQY)
+                WidgetScatterPlot(
+                    title='QFLS vs Intensity (LuQY)',
+                    autorange=True,
+                    layout={'lg': Layout(h=6, w=6, x=6, y=6)},
+                    x=Axis(
+                        search_quantity=f'data.settings.laser_intensity#{SCHEMA_QN}',
+                        unit='mW/cm**2',
+                        title='Laser (mW/cm²)',
+                    ),
+                    y=Axis(
+                        search_quantity=f'data.results[0].qfls#{SCHEMA_QN}',
+                        unit='eV',
+                        title='QFLS (eV)',
+                    ),
+                    color=f'data.results[0].luqy#{SCHEMA_QN}',
+                    size=8,
+                ),
+                # 5) Jsc (derived) vs Bandgap (LuQY)
+                WidgetScatterPlot(
+                    title='Jsc vs Eg (LuQY)',
+                    autorange=True,
+                    layout={'lg': Layout(h=6, w=6, x=0, y=12)},
+                    x=Axis(
+                        search_quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
+                        unit='eV',
+                        title='Bandgap (eV)',
+                    ),
+                    y=Axis(
+                        search_quantity=f'data.results[0].derived_jsc#{SCHEMA_QN}',
+                        unit='mA/cm**2',
+                        title='Jsc (mA/cm²)',
+                    ),
+                    color=f'data.results[0].luqy#{SCHEMA_QN}',
+                    size=8,
+                ),
+                # 6) LuQY (%) vs Jsc (QFLS)
+                WidgetScatterPlot(
+                    title='LuQY vs Jsc (QFLS)',
+                    autorange=True,
+                    layout={'lg': Layout(h=6, w=6, x=6, y=12)},
+                    x=Axis(
+                        search_quantity=f'data.results[0].derived_jsc#{SCHEMA_QN}',
+                        unit='mA/cm**2',
+                        title='Jsc (mA/cm²)',
+                    ),
+                    y=Axis(
+                        search_quantity=f'data.results[0].luqy#{SCHEMA_QN}',
+                        title='LuQY (%)',
                     ),
                     color=f'data.results[0].qfls#{SCHEMA_QN}',
                     size=8,
