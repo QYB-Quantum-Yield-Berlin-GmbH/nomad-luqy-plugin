@@ -8,6 +8,7 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemHistogram,
     MenuItemTerms,
+    MenuSizeEnum,
     SearchQuantities,
     WidgetScatterPlot,
 )
@@ -25,6 +26,7 @@ app_entry_point = AppEntryPoint(
         search_quantities=SearchQuantities(include=[f'*#{SCHEMA_QN}']),
         filters_locked={'section_defs.definition_qualified_name': [SCHEMA_QN]},
         columns=[
+            Column(quantity='entry_id', label='Entry ID', selected=False),
             Column(quantity='mainfile', label='File', selected=True),
             Column(
                 quantity=f'data.settings.timestamp#{SCHEMA_QN}',
@@ -142,11 +144,135 @@ app_entry_point = AppEntryPoint(
         ],
         # LEFT FILTERS
         menu=Menu(
-            title='Filters',
             items=[
-                MenuItemTerms(
-                    title='Dataset',
-                    quantity='datasets.dataset_name',
+                # --- Measurement settings ---
+                Menu(
+                    title='Measurement Settings',
+                    size=MenuSizeEnum.MD,
+                    items=[
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.laser_intensity#{SCHEMA_QN}',
+                                unit='mW/cm**2',
+                            ),
+                            title='Laser intensity',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.bias_voltage#{SCHEMA_QN}',
+                                unit='V',
+                            ),
+                            title='Bias voltage (V)',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.smu_current_density#{SCHEMA_QN}',
+                                unit='mA/cm**2',
+                            ),
+                            title='SMU current density (mA/cm²)',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.integration_time#{SCHEMA_QN}',
+                                unit='ms',
+                            ),
+                            title='Integration time (ms)',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.delay_time#{SCHEMA_QN}',
+                                unit='s',
+                            ),
+                            title='Delay time (s)',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.laser_spot_size#{SCHEMA_QN}',
+                                unit='cm**2',
+                            ),
+                            title='Laser spot size (cm²)',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.subcell_area#{SCHEMA_QN}',
+                                unit='cm**2',
+                            ),
+                            title='Subcell area (cm²)',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemTerms(
+                            search_quantity=f'data.settings.subcell#{SCHEMA_QN}',
+                            title='Subcell',
+                        ),
+                    ],
+                ),
+                # --- Results ---
+                Menu(
+                    title='Results',
+                    size=MenuSizeEnum.MD,
+                    items=[
+                        MenuItemHistogram(
+                            x=Axis(search_quantity=f'data.results[0].luqy#{SCHEMA_QN}'),
+                            title='LuQY (fraction)',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.results[0].qfls#{SCHEMA_QN}',
+                                unit='eV',
+                            ),
+                            title='QFLS (eV)',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
+                                unit='eV',
+                            ),
+                            title='Bandgap (eV)',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.results[0].derived_jsc#{SCHEMA_QN}',
+                                unit='mA/cm**2',
+                            ),
+                            title='Jsc (derived, mA/cm²)',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemTerms(
+                            search_quantity=f'data.results[0].qfls_confidence#{SCHEMA_QN}',
+                            title='QFLS confidence',
+                        ),
+                    ],
+                ),
+                # --- Entry / Dataset ---
+                Menu(
+                    title='Entry / Dataset',
+                    size=MenuSizeEnum.MD,
+                    items=[
+                        MenuItemTerms(
+                            search_quantity='datasets.dataset_name', title='Dataset'
+                        ),
+                        MenuItemTerms(search_quantity='authors.name', title='Author'),
+                    ],
                 ),
             ],
         ),
