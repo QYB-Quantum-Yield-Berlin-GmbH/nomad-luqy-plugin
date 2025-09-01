@@ -26,6 +26,7 @@ app_entry_point = AppEntryPoint(
         search_quantities=SearchQuantities(include=[f'*#{SCHEMA_QN}']),
         filters_locked={'section_defs.definition_qualified_name': [SCHEMA_QN]},
         columns=[
+            # Basic info
             Column(quantity='entry_id', label='Entry ID', selected=False),
             Column(quantity='mainfile', label='File', selected=True),
             Column(
@@ -77,7 +78,7 @@ app_entry_point = AppEntryPoint(
             # Settings
             Column(
                 quantity=f'data.settings.laser_intensity#{SCHEMA_QN}',
-                label='Laser int',
+                label='Laser Intensity',
                 unit='mW/cm**2',
                 selected=False,
                 format={'decimals': 2, 'mode': 'standard'},
@@ -135,6 +136,7 @@ app_entry_point = AppEntryPoint(
                 label='Subcell',
                 selected=False,
             ),
+            # Metadata
             Column(
                 quantity='datasets.dataset_name',
                 label='Dataset',
@@ -164,9 +166,66 @@ app_entry_point = AppEntryPoint(
                                 search_quantity=f'data.settings.bias_voltage#{SCHEMA_QN}',
                                 unit='V',
                             ),
-                            title='Bias voltage (V)',
+                            title='Bias voltage',
                             show_input=True,
                             nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.smu_current_density#{SCHEMA_QN}',
+                                unit='mA/cm**2',
+                            ),
+                            title='SMU current density',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.integration_time#{SCHEMA_QN}',
+                                unit='ms',
+                            ),
+                            title='Integration time',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.delay_time#{SCHEMA_QN}',
+                                unit='s',
+                            ),
+                            title='Delay time',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.eqe_at_laser#{SCHEMA_QN}',
+                            ),
+                            title='EQE @ laser wavelength',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.laser_spot_size#{SCHEMA_QN}',
+                                unit='cm**2',
+                            ),
+                            title='Laser spot size',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.settings.subcell_area#{SCHEMA_QN}',
+                                unit='cm**2',
+                            ),
+                            title='Subcell area',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemTerms(
+                            search_quantity=f'data.settings.subcell#{SCHEMA_QN}',
+                            title='Subcell',
                         ),
                     ],
                 ),
