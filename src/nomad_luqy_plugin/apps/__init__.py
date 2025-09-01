@@ -147,6 +147,61 @@ app_entry_point = AppEntryPoint(
         # LEFT FILTERS
         menu=Menu(
             items=[
+                # --- Results ---
+                Menu(
+                    title='Results',
+                    size=MenuSizeEnum.MD,
+                    items=[
+                        MenuItemHistogram(
+                            x=Axis(search_quantity=f'data.results[0].luqy#{SCHEMA_QN}'),
+                            title='LuQY (%)',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.results[0].qfls#{SCHEMA_QN}',
+                                unit='eV',
+                            ),
+                            title='QFLS',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.results[0].qfls_het#{SCHEMA_QN}',
+                                unit='eV',
+                            ),
+                            title='QFLS HET',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemTerms(
+                            search_quantity=f'data.results[0].qfls_confidence#{SCHEMA_QN}',
+                            title='QFLS confidence',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
+                                unit='eV',
+                            ),
+                            title='Bandgap',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.results[0].derived_jsc#{SCHEMA_QN}',
+                                unit='mA/cm**2',
+                            ),
+                            title='Jsc (derived',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                    ],
+                ),
                 # --- Measurement settings ---
                 Menu(
                     title='Measurement Settings',
