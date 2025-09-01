@@ -143,11 +143,26 @@ app_entry_point = AppEntryPoint(
             # Metadata
             Column(quantity='authors.name', label='Author', selected=False),
             Column(quantity='entry_id', label='Entry ID', selected=False),
-            Column(quantity='upload_create_time', label='Uploaded at', selected=True),
+            Column(quantity='upload_create_time', label='Uploaded at', selected=False),
         ],
         # LEFT FILTERS
         menu=Menu(
             items=[
+                # --- Basic info ---
+                MenuItemTerms(
+                    search_quantity='datasets.dataset_name',
+                    title='Dataset',
+                ),
+                MenuItemTerms(
+                    search_quantity='mainfile',
+                    title='File',
+                ),
+                MenuItemHistogram(
+                    x=Axis(search_quantity=f'data.settings.timestamp#{SCHEMA_QN}'),
+                    title='Timestamp',
+                    show_input=True,
+                    nbins=30,
+                ),
                 # --- Results ---
                 Menu(
                     title='Results',
@@ -177,9 +192,13 @@ app_entry_point = AppEntryPoint(
                             show_input=True,
                             nbins=30,
                         ),
-                        MenuItemTerms(
-                            search_quantity=f'data.results.qfls_confidence#{SCHEMA_QN}',
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.results.qfls_confidence#{SCHEMA_QN}'
+                            ),
                             title='QFLS confidence',
+                            show_input=True,
+                            nbins=3,
                         ),
                         MenuItemHistogram(
                             x=Axis(
@@ -280,6 +299,27 @@ app_entry_point = AppEntryPoint(
                         MenuItemTerms(
                             search_quantity=f'data.settings.subcell#{SCHEMA_QN}',
                             title='Subcell',
+                        ),
+                    ],
+                ),
+                # --- Metadata ---
+                Menu(
+                    title='Metadata',
+                    size=MenuSizeEnum.MD,
+                    items=[
+                        MenuItemTerms(
+                            search_quantity='authors.name',
+                            title='Author',
+                        ),
+                        MenuItemTerms(
+                            search_quantity='entry_id',
+                            title='Entry ID',
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(search_quantity='upload_create_time'),
+                            title='Uploaded at',
+                            show_input=True,
+                            nbins=30,
                         ),
                     ],
                 ),
