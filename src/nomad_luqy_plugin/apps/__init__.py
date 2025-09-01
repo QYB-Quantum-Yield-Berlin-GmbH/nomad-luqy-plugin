@@ -159,6 +159,46 @@ app_entry_point = AppEntryPoint(
                             show_input=True,
                             nbins=30,
                         ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.results.qfls#{SCHEMA_QN}',
+                                unit='eV',
+                            ),
+                            title='QFLS',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.results.qfls_het#{SCHEMA_QN}',
+                                unit='eV',
+                            ),
+                            title='QFLS HET',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemTerms(
+                            search_quantity=f'data.results.qfls_confidence#{SCHEMA_QN}',
+                            title='QFLS confidence',
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.results.bandgap#{SCHEMA_QN}',
+                                unit='eV',
+                            ),
+                            title='Bandgap',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                        MenuItemHistogram(
+                            x=Axis(
+                                search_quantity=f'data.results.derived_jsc#{SCHEMA_QN}',
+                                unit='mA/cm**2',
+                            ),
+                            title='Jsc',
+                            show_input=True,
+                            nbins=30,
+                        ),
                     ],
                 ),
                 # --- Measurement settings ---
