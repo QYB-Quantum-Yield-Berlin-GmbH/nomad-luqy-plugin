@@ -377,6 +377,7 @@ class LuQYParser(MatchingParser):
     def __init__(self) -> None:
         super().__init__(name='luqy_pro_parser')
         self._mainfile_name_re = re.compile(FILE_RE)
+        self.creates_children = True
 
     """
     def is_mainfile(
