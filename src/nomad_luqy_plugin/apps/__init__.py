@@ -341,7 +341,7 @@ app_entry_point = AppEntryPoint(
                 WidgetScatterPlot(
                     title='Eg vs LuQY (QFLS)',
                     autorange=True,
-                    layout={'lg': Layout(h=6, w=6, x=0, y=0)},
+                    layout={'lg': Layout(h=6, w=7, x=0, y=0)},
                     x=Axis(
                         search_quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
                         unit='eV',
@@ -358,7 +358,7 @@ app_entry_point = AppEntryPoint(
                 WidgetScatterPlot(
                     title='QFLS vs Eg (LuQY)',
                     autorange=True,
-                    layout={'lg': Layout(h=6, w=6, x=6, y=0)},
+                    layout={'lg': Layout(h=6, w=7, x=7, y=0)},
                     x=Axis(
                         search_quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
                         unit='eV',
@@ -376,7 +376,7 @@ app_entry_point = AppEntryPoint(
                 WidgetScatterPlot(
                     title='LuQY vs Intensity (t_int)',
                     autorange=True,
-                    layout={'lg': Layout(h=6, w=6, x=0, y=6)},
+                    layout={'lg': Layout(h=6, w=7, x=14, y=0)},
                     x=Axis(
                         search_quantity=f'data.settings.laser_intensity#{SCHEMA_QN}',
                         unit='mW/cm**2',
@@ -393,7 +393,7 @@ app_entry_point = AppEntryPoint(
                 WidgetScatterPlot(
                     title='QFLS vs Intensity (LuQY)',
                     autorange=True,
-                    layout={'lg': Layout(h=6, w=6, x=6, y=6)},
+                    layout={'lg': Layout(h=6, w=7, x=0, y=6)},
                     x=Axis(
                         search_quantity=f'data.settings.laser_intensity#{SCHEMA_QN}',
                         unit='mW/cm**2',
@@ -411,7 +411,7 @@ app_entry_point = AppEntryPoint(
                 WidgetScatterPlot(
                     title='Jsc vs Eg (LuQY)',
                     autorange=True,
-                    layout={'lg': Layout(h=6, w=6, x=0, y=12)},
+                    layout={'lg': Layout(h=6, w=7, x=7, y=6)},
                     x=Axis(
                         search_quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
                         unit='eV',
@@ -429,7 +429,7 @@ app_entry_point = AppEntryPoint(
                 WidgetScatterPlot(
                     title='LuQY vs Jsc (QFLS)',
                     autorange=True,
-                    layout={'lg': Layout(h=6, w=6, x=6, y=12)},
+                    layout={'lg': Layout(h=6, w=7, x=14, y=6)},
                     x=Axis(
                         search_quantity=f'data.results[0].derived_jsc#{SCHEMA_QN}',
                         unit='mA/cm**2',
