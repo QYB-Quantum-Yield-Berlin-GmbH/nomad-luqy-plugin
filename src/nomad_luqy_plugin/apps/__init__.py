@@ -179,8 +179,6 @@ app_entry_point = AppEntryPoint(
                         MenuItemTerms(
                             search_quantity=f'data.results[0].qfls_confidence#{SCHEMA_QN}',
                             title='QFLS confidence',
-                            show_input=True,
-                            nbins=30,
                         ),
                         MenuItemHistogram(
                             x=Axis(
@@ -196,7 +194,7 @@ app_entry_point = AppEntryPoint(
                                 search_quantity=f'data.results[0].derived_jsc#{SCHEMA_QN}',
                                 unit='mA/cm**2',
                             ),
-                            title='Jsc (derived',
+                            title='Jsc',
                             show_input=True,
                             nbins=30,
                         ),
