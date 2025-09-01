@@ -403,6 +403,16 @@ class LuQYParser(MatchingParser):
         return [str(i) for i in range(n)]
     """
 
+    def is_mainfile(
+        self,
+        filename: str,
+        mime: str | None = None,
+        buffer: bytes | None = None,
+        decoded_buffer: str | None = None,
+        compression: str | None = None,
+    ):
+        return ['0', '1']
+
     def parse(
         self,
         mainfile: str,
