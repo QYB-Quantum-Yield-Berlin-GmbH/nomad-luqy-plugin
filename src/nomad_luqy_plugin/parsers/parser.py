@@ -379,7 +379,6 @@ class LuQYParser(MatchingParser):
         self._mainfile_name_re = re.compile(FILE_RE)
         self.creates_children = True
 
-    """
     def is_mainfile(
         self,
         filename: str,
@@ -402,8 +401,8 @@ class LuQYParser(MatchingParser):
         n = max(n, 1)
 
         return [str(i) for i in range(n)]
-    """
 
+    """
     def is_mainfile(
         self,
         filename: str,
@@ -413,6 +412,7 @@ class LuQYParser(MatchingParser):
         compression: str | None = None,
     ):
         return ['0', '1']
+    """
 
     def parse(
         self,
