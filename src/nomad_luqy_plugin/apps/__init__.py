@@ -149,6 +149,18 @@ app_entry_point = AppEntryPoint(
         menu=Menu(
             items=[
                 # --- Results ---
+                Menu(
+                    title='Results',
+                    size=MenuSizeEnum.MD,
+                    items=[
+                        MenuItemHistogram(
+                            x=Axis(search_quantity=f'data.results.luqy#{SCHEMA_QN}'),
+                            title='LuQY (%)',
+                            show_input=True,
+                            nbins=30,
+                        ),
+                    ],
+                ),
                 # --- Measurement settings ---
                 Menu(
                     title='Measurement Settings',
