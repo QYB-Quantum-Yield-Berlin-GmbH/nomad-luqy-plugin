@@ -26,24 +26,41 @@ app_entry_point = AppEntryPoint(
         filters_locked={'section_defs.definition_qualified_name': [SCHEMA_QN]},
         columns=[
             Column(quantity='mainfile', label='File', selected=True),
-            Column(quantity='upload_create_time', label='Uploaded at', selected=True),
+            Column(
+                quantity=f'data.settings.timestamp#{SCHEMA_QN}',
+                label='Timestamp',
+                selected=True,
+            ),
             # Results
             Column(
                 quantity=f'data.results[0].luqy#{SCHEMA_QN}',
                 label='LuQY (%)',
-                selected=True,
-                format={'decimals': 4, 'mode': 'standard'},
-            ),
-            Column(
-                quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
-                label='Bandgap',
-                unit='eV',
                 selected=True,
                 format={'decimals': 3, 'mode': 'standard'},
             ),
             Column(
                 quantity=f'data.results[0].qfls#{SCHEMA_QN}',
                 label='QFLS',
+                unit='eV',
+                selected=True,
+                format={'decimals': 3, 'mode': 'standard'},
+            ),
+            Column(
+                quantity=f'data.results[0].qfls_het#{SCHEMA_QN}',
+                label='QFLS HET',
+                unit='eV',
+                selected=False,
+                format={'decimals': 3, 'mode': 'standard'},
+            ),
+            Column(
+                quantity=f'data.results[0].qfls_confidence#{SCHEMA_QN}',
+                label='QFLS Confidence',
+                selected=False,
+                format={'decimals': 0, 'mode': 'standard'},
+            ),
+            Column(
+                quantity=f'data.results[0].bandgap#{SCHEMA_QN}',
+                label='Bandgap',
                 unit='eV',
                 selected=True,
                 format={'decimals': 3, 'mode': 'standard'},
@@ -58,35 +75,58 @@ app_entry_point = AppEntryPoint(
             # Settings
             Column(
                 quantity=f'data.settings.laser_intensity#{SCHEMA_QN}',
-                label='Laser',
+                label='Laser int',
                 unit='mW/cm**2',
-                selected=True,
+                selected=False,
                 format={'decimals': 2, 'mode': 'standard'},
             ),
             Column(
+                quantity=f'data.settings.bias_voltage#{SCHEMA_QN}',
+                label='Bias voltage',
+                unit='V',
+                selected=False,
+                format={'decimals': 4, 'mode': 'standard'},
+            ),
+            Column(
+                quantity=f'data.settings.smu_current_density#{SCHEMA_QN}',
+                label='SMU current density',
+                unit='mA/cm**2',
+                selected=False,
+                format={'decimals': 3, 'mode': 'standard'},
+            ),
+            Column(
                 quantity=f'data.settings.integration_time#{SCHEMA_QN}',
-                label='Integration',
+                label='Integration time',
                 unit='ms',
-                selected=True,
+                selected=False,
                 format={'decimals': 0, 'mode': 'standard'},
             ),
             Column(
                 quantity=f'data.settings.delay_time#{SCHEMA_QN}',
-                label='Delay',
+                label='Delay time',
                 unit='s',
                 selected=False,
+                format={'decimals': 3, 'mode': 'standard'},
+            ),
+            Column(
+                quantity=f'data.settings.eqe_at_laser#{SCHEMA_QN}',
+                label='EQE @ laser wavelength',
+                selected=False,
+                format={'decimals': 2, 'mode': 'standard'},
             ),
             Column(
                 quantity=f'data.settings.laser_spot_size#{SCHEMA_QN}',
-                label='Spot',
+                label='Laser spot size',
                 unit='cm**2',
                 selected=False,
+                format={'decimals': 1, 'mode': 'standard'},
             ),
             Column(
                 quantity=f'data.settings.subcell_area#{SCHEMA_QN}',
-                label='Area',
+                label='Subcell area',
                 unit='cm**2',
                 selected=False,
+                format={'decimals': 3, 'mode': 'standard'},
             ),
             Column(
                 quantity=f'data.settings.subcell#{SCHEMA_QN}',
@@ -94,15 +134,11 @@ app_entry_point = AppEntryPoint(
                 selected=False,
             ),
             Column(
-                quantity=f'data.settings.timestamp#{SCHEMA_QN}',
-                label='Measured at',
-                selected=False,
-            ),
-            Column(
                 quantity='datasets.dataset_name',
                 label='Dataset',
                 selected=False,
             ),
+            Column(quantity='upload_create_time', label='Uploaded at', selected=True),
         ],
         # LEFT FILTERS
         menu=Menu(

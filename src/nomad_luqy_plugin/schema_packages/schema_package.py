@@ -141,7 +141,7 @@ class LuQYProResult(MeasurementResult):
     qfls = Quantity(
         type=np.float64,
         unit='eV',
-        description='Quasi‑Fermi level splitting derived from the measurement.',
+        description='Quasi‑Fermi level splitting.',
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
             label='QFLS',
@@ -158,7 +158,7 @@ class LuQYProResult(MeasurementResult):
     )
     qfls_confidence = Quantity(
         type=np.float64,
-        description='Quasi-Fermi level splitting.',
+        description='Quasi-Fermi level splitting confidence.',
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
             label='QFLS confidence',

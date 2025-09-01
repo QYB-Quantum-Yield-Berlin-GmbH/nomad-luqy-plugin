@@ -402,18 +402,6 @@ class LuQYParser(MatchingParser):
 
         return [str(i) for i in range(n)]
 
-    """
-    def is_mainfile(
-        self,
-        filename: str,
-        mime: str | None = None,
-        buffer: bytes | None = None,
-        decoded_buffer: str | None = None,
-        compression: str | None = None,
-    ):
-        return ['0', '1']
-    """
-
     def parse(
         self,
         mainfile: str,
@@ -525,8 +513,8 @@ class LuQYParser(MatchingParser):
                 key = str(i)
                 if key in child_archives:
                     child_archives[key].data = build_measurement(i)
-            if num_meas > 0:
-                archive.data = build_measurement(0)
+            # if num_meas > 0:
+            #    archive.data = build_measurement(0)
             return
 
         # single:
