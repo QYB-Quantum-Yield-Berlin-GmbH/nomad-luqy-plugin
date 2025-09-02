@@ -4,14 +4,17 @@ from nomad.metainfo import Section
 
 
 class LuQYSpectrumPlot(PlotSection):
-    m_def = Section(label='LuQY Spectrum')
+    m_def = Section(label='LuQY Spectrum', a_eln={'overview': True})
 
-    def get_plot(self):
+    def normalize(self, archive, logger):
+        super().normalize(archive, logger)
         result = self.m_parent
+
         x_nm = getattr(result, 'wavelength', None)
         y = getattr(result, 'luminescence_flux_density', None)
-        if x_nm is None or y is None:
-            return None
+        if x_nm is None or y is None or len(x_nm) == 0 or len(y) == 0:
+            return
+
         fig = go.Figure()
         fig.add_trace(
             go.Scatter(
@@ -29,4 +32,8 @@ class LuQYSpectrumPlot(PlotSection):
             hovermode='x unified',
             uirevision='luqy-spectrum',
         )
-        return PlotlyFigure(fig=fig)
+
+        figure_json = fig.to_plotly_json()
+        figure_json['config'] = {'displaylogo': False, 'scrollZoom': True}
+
+        self.figures = [PlotlyFigure(label='PL spectrum', figure=figure_json)]
