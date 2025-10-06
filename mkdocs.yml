@@ -2,19 +2,14 @@ site_name: nomad-luqy-plugin
 site_description: NOMAD plugin for parsing and analyzing LuQY data.
 site_author: Aleksei Belonovskii
 
-repo_url: https://github.com/QYBBelonovskii/nomad-luqy-plugin
+repo_url: https://github.com/QYB-Quantum-Yield-Berlin-GmbH/nomad-luqy-plugin
 edit_uri: ""
 
 nav:
   - Home: index.md
-  - Tutorial: tutorial/tutorial.md
   - How-to guides:
       - Install this Plugin: how_to/install_this_plugin.md
       - Use this Plugin: how_to/use_this_plugin.md
-      - Contribute to this plugin: how_to/contribute_to_this_plugin.md
-      - Contribute to the documentation: how_to/contribute_to_the_documentation.md
-  - Explanation: explanation/explanation.md
-  - Reference: reference/references.md
 plugins:
   - search
 theme:
