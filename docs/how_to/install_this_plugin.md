@@ -11,7 +11,7 @@ Ensure you have Docker installed on your machine. You will also need access to a
 In the `docker` directory, create a file named `plugins.txt` with the following content:
 
 ```
-git+https://github.com/QYBBelonovskii/nomad-luqy-plugin.git@main
+git+https://github.com/QYB-Quantum-Yield-Berlin-GmbH/nomad-luqy-plugin.git@main   
 ```
 
 This file specifies the source from which the plugin will be installed.
